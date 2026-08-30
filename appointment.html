@@ -301,6 +301,32 @@
 
 <!-- JAVASCRIPT -->
 <script>
+  // Automatically redirect to homepage on page refresh or browser back/forward
+  (function() {
+    function redirectToHome() {
+      window.location.replace("index.html");
+    }
+
+    const perfEntries = performance.getEntriesByType && performance.getEntriesByType("navigation");
+    if (perfEntries && perfEntries.length > 0) {
+      const type = perfEntries[0].type;
+      if (type === "reload" || type === "back_forward") {
+        redirectToHome();
+      }
+    } else if (window.performance && window.performance.navigation) {
+      const legacyType = window.performance.navigation.type;
+      if (legacyType === 1 || legacyType === 2) {
+        redirectToHome();
+      }
+    }
+
+    window.addEventListener('pageshow', function(event) {
+      if (event.persisted) {
+        redirectToHome();
+      }
+    });
+  })();
+
   function toggleNav() {
     const navLinks = document.getElementById('navLinks');
     navLinks.classList.toggle('active');
