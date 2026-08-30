@@ -185,53 +185,7 @@
   }
   .spec-pill::before { content: '✓'; color: var(--sky); font-weight: 800; }
 
-  /* 2. BEFORE / AFTER */
-  #before-after { background: var(--white); }
-  .ba-header { text-align: center; margin-bottom: 40px; }
-  .ba-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
-  .ba-card {
-    background: var(--soft-gray); border-radius: var(--radius); border: 1px solid var(--border);
-    padding: 20px; transition: transform 0.3s, box-shadow 0.3s;
-  }
-  .ba-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(27,43,107,0.1); }
-  .ba-title { font-size: 1.05rem; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
-  .ba-subtitle { font-size: 0.82rem; color: var(--muted); margin-bottom: 16px; }
-  
-  /* Comparison slider element */
-  .ba-slider-container {
-    position: relative; width: 100%; height: 210px; border-radius: var(--radius-sm);
-    overflow: hidden; user-select: none; border: 1px solid var(--border);
-  }
-  .ba-img-before, .ba-img-after {
-    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-    display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
-    padding: 15px; font-weight: 700;
-  }
-  .ba-img-before {
-    background: linear-gradient(135deg, #FFF3E0, #FFE0B2); color: #E65100;
-  }
-  .ba-img-after {
-    background: linear-gradient(135deg, #E8F5E9, #C8E6C9); color: #2E7D32;
-    clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
-  }
-  .ba-tag {
-    position: absolute; top: 12px; padding: 4px 10px; border-radius: 4px;
-    font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
-  }
-  .tag-before { left: 12px; background: rgba(230,81,0,0.15); color: #D84315; }
-  .tag-after { right: 12px; background: rgba(46,125,50,0.15); color: #1B5E20; }
-  .ba-divider-line {
-    position: absolute; top: 0; bottom: 0; left: 50%; width: 2px;
-    background: var(--white); box-shadow: 0 0 8px rgba(0,0,0,0.3); pointer-events: none;
-  }
-  .ba-slider-input {
-    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-    opacity: 0; cursor: ew-resize; z-index: 10;
-  }
-  .ba-vis-content { display: flex; flex-direction: column; align-items: center; gap: 6px; }
-  .ba-vis-icon { width: 44px; height: 44px; opacity: 0.85; }
-
-  /* 3. WHY CHOOSE US */
+  /* 2. WHY CHOOSE US */
   #why-choose-us { background: var(--soft-gray); }
   .why-header { text-align: center; margin-bottom: 48px; }
   .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
@@ -483,7 +437,6 @@
     <li><a href="#services">Services</a></li>
     <li><a href="#gallery">Clinic Photos</a></li>
     <li><a href="#doctor">Doctor Profile</a></li>
-    <li><a href="#before-after">Before/After</a></li>
     <li><a href="#why-choose-us">Why Choose Us</a></li>
     <li><a href="#process">Process</a></li>
     <li><a href="#technology">Tech</a></li>
@@ -642,114 +595,7 @@
   </div>
 </section>
 
-<!-- 2. BEFORE / AFTER -->
-<section id="before-after">
-  <div class="ba-header text-center">
-    <div class="section-label">Real Transformations</div>
-    <h2 class="section-title">Before & After Examples</h2>
-    <p class="section-desc">Drag the interactive slider on any image to compare patient results before and after treatment.</p>
-  </div>
-
-  <div class="ba-grid">
-    <!-- Example 1 -->
-    <div class="ba-card">
-      <div class="ba-title">Teeth Whitening</div>
-      <div class="ba-subtitle">In-clinic whitening session (1 hour)</div>
-      <div class="ba-slider-container">
-        <div class="ba-img-before">
-          <div class="ba-vis-content">
-            <svg class="ba-vis-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            <span>Stained / Yellow Teeth</span>
-          </div>
-          <span class="ba-tag tag-before">Before</span>
-        </div>
-        <div class="ba-img-after" id="after1">
-          <div class="ba-vis-content">
-            <svg class="ba-vis-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></svg>
-            <span>Radiant White Smile</span>
-          </div>
-          <span class="ba-tag tag-after">After</span>
-        </div>
-        <div class="ba-divider-line" id="line1"></div>
-        <input type="range" min="0" max="100" value="50" class="ba-slider-input" oninput="updateSlider(this, 'after1', 'line1')">
-      </div>
-    </div>
-
-    <!-- Example 2 -->
-    <div class="ba-card">
-      <div class="ba-title">Root Canal & Ceramic Crown</div>
-      <div class="ba-subtitle">Restoration of severely decayed molar</div>
-      <div class="ba-slider-container">
-        <div class="ba-img-before">
-          <div class="ba-vis-content">
-            <svg class="ba-vis-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
-            <span>Fractured Molar</span>
-          </div>
-          <span class="ba-tag tag-before">Before</span>
-        </div>
-        <div class="ba-img-after" id="after2">
-          <div class="ba-vis-content">
-            <svg class="ba-vis-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
-            <span>Restored Ceramic Crown</span>
-          </div>
-          <span class="ba-tag tag-after">After</span>
-        </div>
-        <div class="ba-divider-line" id="line2"></div>
-        <input type="range" min="0" max="100" value="50" class="ba-slider-input" oninput="updateSlider(this, 'after2', 'line2')">
-      </div>
-    </div>
-
-    <!-- Example 3 -->
-    <div class="ba-card">
-      <div class="ba-title">Dental Implant</div>
-      <div class="ba-subtitle">Single tooth implant replacement</div>
-      <div class="ba-slider-container">
-        <div class="ba-img-before">
-          <div class="ba-vis-content">
-            <svg class="ba-vis-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 12H4"/></svg>
-            <span>Missing Tooth Gap</span>
-          </div>
-          <span class="ba-tag tag-before">Before</span>
-        </div>
-        <div class="ba-img-after" id="after3">
-          <div class="ba-vis-content">
-            <svg class="ba-vis-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/></svg>
-            <span>Natural Fixed Implant</span>
-          </div>
-          <span class="ba-tag tag-after">After</span>
-        </div>
-        <div class="ba-divider-line" id="line3"></div>
-        <input type="range" min="0" max="100" value="50" class="ba-slider-input" oninput="updateSlider(this, 'after3', 'line3')">
-      </div>
-    </div>
-
-    <!-- Example 4 -->
-    <div class="ba-card">
-      <div class="ba-title">Smile Alignment</div>
-      <div class="ba-subtitle">Correction of crooked teeth</div>
-      <div class="ba-slider-container">
-        <div class="ba-img-before">
-          <div class="ba-vis-content">
-            <svg class="ba-vis-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 8h16M4 16h16"/></svg>
-            <span>Misaligned Arch</span>
-          </div>
-          <span class="ba-tag tag-before">Before</span>
-        </div>
-        <div class="ba-img-after" id="after4">
-          <div class="ba-vis-content">
-            <svg class="ba-vis-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            <span>Symmetric Smile</span>
-          </div>
-          <span class="ba-tag tag-after">After</span>
-        </div>
-        <div class="ba-divider-line" id="line4"></div>
-        <input type="range" min="0" max="100" value="50" class="ba-slider-input" oninput="updateSlider(this, 'after4', 'line4')">
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 3. WHY CHOOSE US -->
+<!-- 2. WHY CHOOSE US -->
 <section id="why-choose-us">
   <div class="why-header text-center">
     <div class="section-label">Our Advantages</div>
@@ -1121,17 +967,6 @@
     document.querySelectorAll('.faq-item').forEach(item => item.classList.remove('active'));
     if (!isActive) {
       element.classList.add('active');
-    }
-  }
-
-  // Before/After Slider Control
-  function updateSlider(input, afterId, lineId) {
-    const val = input.value;
-    const afterImg = document.getElementById(afterId);
-    const line = document.getElementById(lineId);
-    if (afterImg && line) {
-      afterImg.style.clipPath = `polygon(0 0, ${val}% 0, ${val}% 100%, 0 100%)`;
-      line.style.left = `${val}%`;
     }
   }
 
