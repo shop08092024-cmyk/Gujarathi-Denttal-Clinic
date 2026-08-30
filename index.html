@@ -461,6 +461,17 @@
     .form-row { grid-template-columns: 1fr; }
     section { padding: 56px 5%; }
   }
+
+  /* SCROLL ANIMATIONS */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 </style>
 </head>
 <body>
@@ -1111,6 +1122,46 @@
     );
     window.open(`https://wa.me/919904235189?text=${text}`, '_blank');
   }
+
+  // Scroll Animation with Intersection Observer
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, observerOptions);
+
+  // Initialize fade-up on relevant elements after page load
+  window.addEventListener('load', () => {
+    // Add fade-up animation to section titles and labels
+    document.querySelectorAll('.section-label, .section-title, .section-desc').forEach(el => {
+      if (!el.classList.contains('fade-up')) {
+        el.classList.add('fade-up');
+        observer.observe(el);
+      }
+    });
+
+    // Add to cards and items
+    document.querySelectorAll('.service-card, .doctor-card, .review-card, .faq-item, .feature-item').forEach(el => {
+      if (!el.classList.contains('fade-up')) {
+        el.classList.add('fade-up');
+        observer.observe(el);
+      }
+    });
+
+    // Add to contact form
+    const contactForm = document.querySelector('.contact-form');
+    if (contactForm && !contactForm.classList.contains('fade-up')) {
+      contactForm.classList.add('fade-up');
+      observer.observe(contactForm);
+    }
+  });
 </script>
 </body>
 </html>
