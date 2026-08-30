@@ -126,6 +126,43 @@
   .badge-text small { font-size: 0.72rem; color: var(--muted); }
   .stars { color: #F5A623; font-size: 0.78rem; letter-spacing: 1px; }
 
+  /* CUSTOMER REVIEWS MARQUEE */
+  #reviews { background: linear-gradient(180deg, #FDFEFF 0%, #F5FAFF 100%); }
+  .reviews-header { text-align: center; margin-bottom: 28px; }
+  .reviews-marquee-wrap {
+    position: relative; overflow: hidden; border-radius: 24px; border: 1px solid var(--border);
+    background: var(--white); box-shadow: 0 12px 34px rgba(27,43,107,0.06);
+  }
+  .reviews-marquee-wrap::before,
+  .reviews-marquee-wrap::after {
+    content: ''; position: absolute; top: 0; bottom: 0; width: 90px; z-index: 2; pointer-events: none;
+  }
+  .reviews-marquee-wrap::before {
+    left: 0; background: linear-gradient(90deg, rgba(255,255,255,1), rgba(255,255,255,0));
+  }
+  .reviews-marquee-wrap::after {
+    right: 0; background: linear-gradient(270deg, rgba(255,255,255,1), rgba(255,255,255,0));
+  }
+  .reviews-track {
+    display: flex; width: max-content; gap: 18px; padding: 18px 0;
+    animation: reviewScroll 28s linear infinite;
+  }
+  .reviews-track:hover { animation-play-state: paused; }
+  .review-card {
+    flex: 0 0 320px; background: linear-gradient(180deg, #FFFFFF 0%, #F8FBFF 100%);
+    border: 1px solid var(--border); border-radius: 18px; padding: 18px 18px 16px;
+    box-shadow: 0 8px 22px rgba(27,43,107,0.04);
+  }
+  .review-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 12px; }
+  .review-name { font-size: 0.96rem; font-weight: 700; color: var(--navy); }
+  .review-stars { color: #F5A623; letter-spacing: 2px; font-size: 0.85rem; }
+  .review-meta { font-size: 0.72rem; color: var(--muted); margin-bottom: 10px; }
+  .review-text { font-size: 0.9rem; color: var(--text); line-height: 1.6; }
+  @keyframes reviewScroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
   /* SECTIONS GLOBAL */
   section { padding: 80px 5%; }
   .section-label { font-size: 0.78rem; font-weight: 700; color: var(--sky); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px; }
@@ -478,7 +515,7 @@
     <img class="hero-img-main" src="clinic-reception.png" alt="Gujarathi Dental Clinic Reception & Lounge">
     <div class="hero-badge">
       <div class="badge-icon">
-        <svg width="22" height="22" fill="#3EB4E0" viewBox="0 0 24 24"><path d="M12 2l2.4 7.4h7.6l-6.2 4.5 2.4 7.4-6.2-4.5-6.2 4.5 2.4-7.4-6.2-4.5h7.6z"/></svg>
+        <svg width="22" height="22" fill="#F5A623" viewBox="0 0 24 24"><path d="M12 2l2.4 7.4h7.6l-6.2 4.5 2.4 7.4-6.2-4.5-6.2 4.5 2.4-7.4-6.2-4.5h7.6z"/></svg>
       </div>
       <div class="badge-text">
         <strong>Top Rated Clinic</strong>
@@ -591,6 +628,91 @@
         <span class="spec-pill">Crowns, Bridges & Veneers</span>
         <span class="spec-pill">Teeth Whitening</span>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- CUSTOMER REVIEWS -->
+<section id="reviews">
+  <div class="reviews-header text-center">
+    <div class="section-label">Patient Feedback</div>
+    <h2 class="section-title">Trusted By Families Across Gandhinagar</h2>
+    <p class="section-desc">A few real experiences from our patients who value gentle care, honest guidance, and modern dental treatment.</p>
+  </div>
+
+  <div class="reviews-marquee-wrap">
+    <div class="reviews-track">
+      <article class="review-card">
+        <div class="review-top"><div class="review-name">Patel Kunal</div><div class="review-stars">★★★★★</div></div>
+        <div class="review-meta">Child cavity treatment • 9 months ago</div>
+        <div class="review-text">“My 10-year-old child had a cavity treated here and the experience was excellent. Dr. Ronak was very gentle and made my child feel comfortable.”</div>
+      </article>
+      <article class="review-card">
+        <div class="review-top"><div class="review-name">Chirag Goswami</div><div class="review-stars">★★★★★</div></div>
+        <div class="review-meta">RCT for son • 9 months ago</div>
+        <div class="review-text">“The doctor is polite, well-trained, and honest in their suggestions. I truly appreciate their professionalism and care.”</div>
+      </article>
+      <article class="review-card">
+        <div class="review-top"><div class="review-name">Pranav Patel</div><div class="review-stars">★★★★★</div></div>
+        <div class="review-meta">Regular dental checkup • 4 years ago</div>
+        <div class="review-text">“Dr. Gujarathi is professional, knowledgeable and highly skillful. Both doctors are accommodating and approachable.”</div>
+      </article>
+      <article class="review-card">
+        <div class="review-top"><div class="review-name">Ankit Vithalani</div><div class="review-stars">★★★★★</div></div>
+        <div class="review-meta">RCT • 8 months ago</div>
+        <div class="review-text">“The whole procedure was explained clearly, was painless, and the guidance for future care was excellent.”</div>
+      </article>
+      <article class="review-card">
+        <div class="review-top"><div class="review-name">Bhargav Prajapati</div><div class="review-stars">★★★★★</div></div>
+        <div class="review-meta">Overall dental care • 1 year ago</div>
+        <div class="review-text">“The clinic's warm atmosphere, modern facilities, and exceptional care make it a standout for quality dental treatment.”</div>
+      </article>
+      <article class="review-card">
+        <div class="review-top"><div class="review-name">Nilesh Jethava</div><div class="review-stars">★★★★★</div></div>
+        <div class="review-meta">RCT treatment • 2 years ago</div>
+        <div class="review-text">“Clinic is well managed and hygienic, and the support staff is trained and good. I strongly recommend the clinic.”</div>
+      </article>
+      <article class="review-card">
+        <div class="review-top"><div class="review-name">AMIT GADKARI</div><div class="review-stars">★★★★★</div></div>
+        <div class="review-meta">Dental procedure • 3 years ago</div>
+        <div class="review-text">“Very nice and pleasant experience compared to scary thoughts of dentist treatment. Dr. Ronak is gentle and treats with care.”</div>
+      </article>
+      <article class="review-card">
+        <div class="review-top"><div class="review-name">Ruhaan Rathod</div><div class="review-stars">★★★★★</div></div>
+        <div class="review-meta">Best experience • 6 months ago</div>
+        <div class="review-text">“Best experience and best treatment. They use advanced technology for every type of dental treatment.”</div>
+      </article>
+      <article class="review-card">
+        <div class="review-top"><div class="review-name">Hitendra Desai</div><div class="review-stars">★★★★★</div></div>
+        <div class="review-meta">First dental visit in years • 1 week ago</div>
+        <div class="review-text">“I was nervous, but they made me feel welcome and explained every step. I didn’t feel any pain or pressure.”</div>
+      </article>
+      <article class="review-card">
+        <div class="review-top"><div class="review-name">Pragnesh Parekh</div><div class="review-stars">★★★★★</div></div>
+        <div class="review-meta">Root canal • 2 weeks ago</div>
+        <div class="review-text">“Had a root canal and filling done here and I’m amazed at how smooth it was. Dr. Ronak explained each step clearly.”</div>
+      </article>
+
+      <article class="review-card">
+        <div class="review-top"><div class="review-name">Patel Kunal</div><div class="review-stars">★★★★★</div></div>
+        <div class="review-meta">Child cavity treatment • 9 months ago</div>
+        <div class="review-text">“My 10-year-old child had a cavity treated here and the experience was excellent. Dr. Ronak was very gentle and made my child feel comfortable.”</div>
+      </article>
+      <article class="review-card">
+        <div class="review-top"><div class="review-name">Chirag Goswami</div><div class="review-stars">★★★★★</div></div>
+        <div class="review-meta">RCT for son • 9 months ago</div>
+        <div class="review-text">“The doctor is polite, well-trained, and honest in their suggestions. I truly appreciate their professionalism and care.”</div>
+      </article>
+      <article class="review-card">
+        <div class="review-top"><div class="review-name">Pranav Patel</div><div class="review-stars">★★★★★</div></div>
+        <div class="review-meta">Regular dental checkup • 4 years ago</div>
+        <div class="review-text">“Dr. Gujarathi is professional, knowledgeable and highly skillful. Both doctors are accommodating and approachable.”</div>
+      </article>
+      <article class="review-card">
+        <div class="review-top"><div class="review-name">Ankit Vithalani</div><div class="review-stars">★★★★★</div></div>
+        <div class="review-meta">RCT • 8 months ago</div>
+        <div class="review-text">“The whole procedure was explained clearly, was painless, and the guidance for future care was excellent.”</div>
+      </article>
     </div>
   </div>
 </section>
