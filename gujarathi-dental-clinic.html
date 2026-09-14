@@ -4,30 +4,55 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Gujarathi Dental Clinic – Kudasan, Gandhinagar</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --navy: #1B2B6B;
-    --navy-dark: #0F1B40;
-    --sky: #3EB4E0;
-    --sky-light: #EBF7FD;
-    --mint: #E8F9F4;
+    /* USER COLOR PALETTE */
+    --deep-twilight: #03045E;
+    --bright-teal: #0077B6;
+    --turquoise-surf: #00B4D8;
+    --frosted-blue: #90E0EF;
+    --light-cyan: #CAF0F8;
     --white: #FFFFFF;
-    --soft-gray: #F7F9FC;
-    --text: #2C3A5A;
-    --muted: #7A8BAD;
-    --border: #E4EAF4;
+    --off-white: #F7FCFE;
+    
+    --text-primary: #03045E;
+    --text-muted: #3D5A80;
+    --border: #D0E8F2;
+    --border-dark: #0077B6;
+    
     --radius: 20px;
     --radius-sm: 12px;
+    --radius-pill: 999px;
+    
+    /* Card Tints */
+    --tint-1: #EBF8FC;
+    --tint-2: #F0FAFE;
+    --tint-3: #E5F6FD;
+    --tint-4: #EEF9FE;
   }
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
-  body { font-family: 'DM Sans', sans-serif; color: var(--text); background: var(--white); line-height: 1.6; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text-primary);
+    background: var(--white);
+    line-height: 1.6;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, .section-title, .doctor-name {
+    font-family: 'Space Grotesk', sans-serif;
+    color: var(--deep-twilight);
+    letter-spacing: -0.02em;
+  }
 
   /* NAV */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: rgba(255,255,255,0.96);
+    background: rgba(255, 255, 255, 0.96);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
     padding: 0 5%;
@@ -35,322 +60,337 @@
     height: 72px;
   }
   .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-  .nav-logo img { height: 48px; width: auto; object-fit: contain; }
-  .nav-logo-text { font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 1rem; color: var(--navy); line-height: 1.2; }
-  .nav-logo-text span { display: block; font-weight: 400; font-size: 0.72rem; color: var(--sky); letter-spacing: 0.05em; text-transform: uppercase; }
-  .nav-links { display: flex; gap: 1.4rem; list-style: none; align-items: center; }
-  .nav-links a { text-decoration: none; color: var(--text); font-size: 0.88rem; font-weight: 500; transition: color 0.2s; }
-  .nav-links a:hover { color: var(--sky); }
-  .nav-cta { background: var(--navy) !important; color: #fff !important; padding: 10px 20px; border-radius: 50px; font-weight: 600 !important; font-size: 0.85rem !important; transition: background 0.2s !important; }
-  .nav-cta:hover { background: var(--sky) !important; }
+  .nav-logo img { height: 44px; width: auto; object-fit: contain; }
+  .nav-links { display: flex; gap: 1.6rem; list-style: none; align-items: center; }
+  .nav-links a {
+    text-decoration: none; color: var(--deep-twilight); font-size: 0.88rem; font-weight: 500;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--bright-teal); }
+  .nav-cta {
+    background: var(--deep-twilight) !important; color: var(--white) !important;
+    padding: 10px 22px; border-radius: var(--radius-pill);
+    font-weight: 600 !important; font-size: 0.85rem !important;
+    transition: all 0.2s !important; border: 1px solid var(--deep-twilight);
+  }
+  .nav-cta:hover { background: var(--bright-teal) !important; border-color: var(--bright-teal) !important; transform: translateY(-1px); }
   .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; z-index: 101; }
-  .hamburger span { display: block; width: 22px; height: 2px; background: var(--navy); border-radius: 4px; transition: all 0.3s; }
+  .hamburger span { display: block; width: 22px; height: 2px; background: var(--deep-twilight); border-radius: 4px; }
 
   /* HERO */
   .hero {
     margin-top: 72px;
-    padding: 60px 5% 60px;
-    background: linear-gradient(140deg, #EBF7FD 0%, #F0F4FF 55%, #E8F9F4 100%);
-    min-height: 85vh;
+    padding: 85px 5% 80px;
+    background: linear-gradient(135deg, var(--white) 0%, var(--light-cyan) 100%);
+    border-bottom: 1px solid var(--border);
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 48px;
     align-items: center;
-    overflow: hidden;
     position: relative;
-  }
-  .hero::before {
-    content: '';
-    position: absolute; top: -100px; right: -100px;
-    width: 480px; height: 480px;
-    background: radial-gradient(circle, rgba(62,180,224,0.13) 0%, transparent 70%);
-    border-radius: 50%; pointer-events: none;
   }
   .hero-content { position: relative; z-index: 1; }
   .hero-eyebrow {
     display: inline-flex; align-items: center; gap: 8px;
-    background: var(--white); border: 1px solid var(--border); border-radius: 50px;
-    padding: 6px 14px; font-size: 0.78rem; font-weight: 600; color: var(--sky);
-    letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 20px;
-    box-shadow: 0 2px 8px rgba(62,180,224,0.12);
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: var(--radius-pill);
+    padding: 6px 14px; font-size: 0.78rem; font-weight: 600; color: var(--bright-teal);
+    letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 24px;
   }
-  .hero-eyebrow::before { content: ''; width: 6px; height: 6px; background: var(--sky); border-radius: 50%; }
+  .hero-eyebrow::before { content: ''; width: 6px; height: 6px; background: var(--turquoise-surf); border-radius: 50%; }
   .hero h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 700;
-    color: var(--navy); line-height: 1.2; margin-bottom: 20px;
+    font-size: clamp(2.4rem, 4.2vw, 3.4rem); font-weight: 700;
+    line-height: 1.15; margin-bottom: 22px; color: var(--deep-twilight);
   }
-  .hero h1 em { font-style: normal; color: var(--sky); }
-  .hero-desc { font-size: 1rem; color: var(--muted); max-width: 460px; margin-bottom: 32px; }
-  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 40px; }
+  .hero h1 em { font-style: normal; color: var(--bright-teal); }
+  .hero-desc { font-size: 0.98rem; color: var(--text-muted); max-width: 480px; margin-bottom: 36px; line-height: 1.7; }
+  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 44px; }
+  
   .btn-primary {
     display: inline-flex; align-items: center; gap: 8px;
-    background: var(--navy); color: #fff; padding: 14px 28px;
-    border-radius: 50px; font-weight: 600; font-size: 0.95rem;
-    text-decoration: none; transition: all 0.2s;
-    box-shadow: 0 4px 20px rgba(27,43,107,0.25);
+    background: var(--deep-twilight); color: var(--white); padding: 14px 30px;
+    border-radius: var(--radius-pill); font-weight: 600; font-size: 0.92rem;
+    text-decoration: none; transition: all 0.2s; border: 1px solid var(--deep-twilight);
   }
-  .btn-primary:hover { background: var(--sky); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(62,180,224,0.35); }
+  .btn-primary:hover { background: var(--bright-teal); border-color: var(--bright-teal); transform: translateY(-2px); }
+  
   .btn-outline {
     display: inline-flex; align-items: center; gap: 8px;
-    border: 2px solid var(--navy); color: var(--navy); padding: 12px 26px;
-    border-radius: 50px; font-weight: 600; font-size: 0.95rem;
+    border: 1px solid var(--border); background: var(--white); color: var(--deep-twilight);
+    padding: 13px 28px; border-radius: var(--radius-pill); font-weight: 600; font-size: 0.92rem;
     text-decoration: none; transition: all 0.2s;
   }
-  .btn-outline:hover { background: var(--navy); color: #fff; }
-  .hero-stats { display: flex; gap: 28px; }
+  .btn-outline:hover { border-color: var(--bright-teal); color: var(--bright-teal); }
+
+  .hero-stats { display: flex; gap: 32px; }
   .stat { display: flex; flex-direction: column; }
-  .stat-num { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 700; color: var(--navy); line-height: 1; }
-  .stat-label { font-size: 0.78rem; color: var(--muted); font-weight: 500; margin-top: 2px; }
+  .stat-num { font-family: 'Space Grotesk', sans-serif; font-size: 1.8rem; font-weight: 700; color: var(--deep-twilight); line-height: 1; }
+  .stat-label { font-size: 0.78rem; color: var(--text-muted); font-weight: 500; margin-top: 4px; }
   .stat-divider { width: 1px; background: var(--border); align-self: stretch; }
 
-  /* Hero visual */
-  .hero-visual { position: relative; padding-bottom: 20px; }
+  /* HERO VISUAL */
+  .hero-visual { position: relative; }
   .hero-img-main {
     width: 100%; border-radius: var(--radius);
-    box-shadow: 0 20px 60px rgba(27,43,107,0.18);
+    border: 1px solid var(--border);
     display: block; object-fit: cover; height: 420px;
-    border: 3px solid var(--white);
   }
   .hero-badge {
-    position: absolute; bottom: 0px; left: -20px;
+    position: absolute; bottom: -16px; left: -16px;
     background: var(--white); border-radius: var(--radius-sm);
-    padding: 14px 18px; box-shadow: 0 8px 32px rgba(27,43,107,0.15);
-    display: flex; align-items: center; gap: 10px; z-index: 2;
+    padding: 14px 20px; border: 1px solid var(--border);
+    display: flex; align-items: center; gap: 12px; z-index: 2;
   }
   .badge-icon {
-    width: 40px; height: 40px; background: var(--sky-light);
-    border-radius: 10px; display: flex; align-items: center; justify-content: center;
+    width: 40px; height: 40px; background: var(--light-cyan);
+    border-radius: var(--radius-pill); display: flex; align-items: center; justify-content: center;
   }
-  .badge-text strong { display: block; font-size: 0.95rem; font-weight: 700; color: var(--navy); }
-  .badge-text small { font-size: 0.72rem; color: var(--muted); }
-  .stars { color: #F5A623; font-size: 0.78rem; letter-spacing: 1px; }
+  .badge-text strong { display: block; font-size: 0.9rem; font-weight: 700; color: var(--deep-twilight); }
+  .badge-text small { font-size: 0.75rem; color: var(--text-muted); }
+  .stars { color: var(--bright-teal); font-size: 0.85rem; letter-spacing: 2px; }
 
   /* SECTIONS GLOBAL */
-  section { padding: 80px 5%; }
-  .section-label { font-size: 0.78rem; font-weight: 700; color: var(--sky); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px; }
-  .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 700; color: var(--navy); line-height: 1.2; margin-bottom: 16px; }
-  .section-desc { font-size: 1rem; color: var(--muted); max-width: 580px; line-height: 1.7; }
+  section { padding: 85px 5%; }
+  .section-label { font-size: 0.75rem; font-weight: 700; color: var(--bright-teal); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px; }
+  .section-title { font-size: clamp(1.9rem, 3.2vw, 2.5rem); font-weight: 700; color: var(--deep-twilight); line-height: 1.2; margin-bottom: 16px; }
+  .section-desc { font-size: 0.95rem; color: var(--text-muted); max-width: 580px; line-height: 1.7; }
   .text-center { text-align: center; }
   .text-center .section-desc { margin-left: auto; margin-right: auto; }
 
   /* REAL CLINIC GALLERY */
-  #gallery { background: var(--white); }
-  .gallery-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 40px; }
+  #gallery { background: var(--white); border-bottom: 1px solid var(--border); }
+  .gallery-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 48px; }
   .gallery-card {
     position: relative; border-radius: var(--radius); overflow: hidden;
-    border: 1px solid var(--border); box-shadow: 0 10px 30px rgba(27,43,107,0.08);
-    transition: transform 0.3s;
+    border: 1px solid var(--border); transition: transform 0.25s;
   }
-  .gallery-card:hover { transform: translateY(-4px); }
+  .gallery-card:hover { transform: translateY(-4px); border-color: var(--bright-teal); }
   .gallery-card img { width: 100%; height: 340px; object-fit: cover; display: block; }
   .gallery-overlay {
     position: absolute; bottom: 0; left: 0; right: 0;
-    background: linear-gradient(0deg, rgba(15,27,64,0.85) 0%, rgba(15,27,64,0) 100%);
-    padding: 24px; color: #fff;
+    background: linear-gradient(0deg, rgba(3,4,94,0.92) 0%, rgba(3,4,94,0) 100%);
+    padding: 28px 24px; color: var(--white);
   }
-  .gallery-overlay h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 4px; }
-  .gallery-overlay p { font-size: 0.85rem; color: rgba(255,255,255,0.8); }
+  .gallery-overlay h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.15rem; font-weight: 600; margin-bottom: 4px; color: var(--white); }
+  .gallery-overlay p { font-size: 0.85rem; color: rgba(255,255,255,0.85); }
 
-  /* SERVICES & OVERLAYS */
-  #services { background: var(--soft-gray); }
-  .services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; }
+  /* SERVICES & PALETTE TINTS */
+  #services { background: var(--off-white); border-bottom: 1px solid var(--border); }
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; margin-top: 48px; }
   .service-card {
-    background: var(--white); border-radius: var(--radius); padding: 28px 24px;
+    background: var(--white); border-radius: var(--radius); padding: 32px 26px;
     border: 1px solid var(--border); transition: all 0.25s;
   }
-  .service-card:hover { border-color: var(--sky); box-shadow: 0 8px 32px rgba(62,180,224,0.12); transform: translateY(-4px); }
+  .service-card:hover { border-color: var(--bright-teal); transform: translateY(-4px); }
   .service-icon {
-    width: 52px; height: 52px; background: var(--sky-light);
-    border-radius: 14px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px;
+    width: 52px; height: 52px; background: var(--light-cyan);
+    border-radius: var(--radius-sm); border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center; margin-bottom: 20px; color: var(--bright-teal);
   }
-  .service-card h3 { font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
-  .service-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; }
+  .service-card h3 { font-size: 1.1rem; font-weight: 600; color: var(--deep-twilight); margin-bottom: 8px; }
+  .service-card p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; }
 
-  /* 1. DOCTOR PROFILE */
-  #doctor { background: var(--soft-gray); }
-  .doctor-grid { display: grid; grid-template-columns: 360px 1fr; gap: 48px; align-items: center; margin-top: 40px; }
+  /* DOCTOR PROFILE */
+  #doctor { background: var(--white); border-bottom: 1px solid var(--border); }
+  .doctor-grid { display: grid; grid-template-columns: 360px 1fr; gap: 48px; align-items: center; margin-top: 48px; }
   .doctor-card {
-    background: var(--white); border: 1px solid var(--border); border-radius: var(--radius);
-    padding: 28px 24px; text-align: center; position: relative; overflow: hidden;
-    box-shadow: 0 12px 36px rgba(27,43,107,0.06);
+    background: var(--off-white); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 32px 24px; text-align: center; position: relative; overflow: hidden;
   }
   .doctor-avatar-wrap {
     width: 180px; height: 180px; margin: 0 auto 20px; border-radius: 50%;
-    background: linear-gradient(135deg, var(--sky-light), var(--mint));
+    background: var(--light-cyan); border: 1px solid var(--border);
     padding: 6px; position: relative;
   }
   .doctor-avatar-wrap svg { width: 100%; height: 100%; border-radius: 50%; }
   .doctor-badge-exp {
     position: absolute; bottom: 8px; right: 10px;
-    background: var(--navy); color: #fff; font-size: 0.75rem; font-weight: 700;
-    padding: 4px 12px; border-radius: 50px; box-shadow: 0 4px 12px rgba(27,43,107,0.3);
+    background: var(--deep-twilight); color: var(--white); font-size: 0.75rem; font-weight: 600;
+    padding: 5px 14px; border-radius: var(--radius-pill);
   }
-  .doctor-name { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
-  .doctor-degree { font-size: 0.9rem; font-weight: 700; color: var(--sky); letter-spacing: 0.04em; margin-bottom: 12px; }
-  .doctor-title-sub { font-size: 0.82rem; color: var(--muted); font-weight: 500; }
-  .doctor-details h3 { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--navy); margin-bottom: 16px; }
-  .doctor-bio { font-size: 0.96rem; color: var(--text); line-height: 1.7; margin-bottom: 28px; }
-  .doctor-specs-title { font-size: 0.85rem; font-weight: 700; color: var(--navy); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 14px; }
+  .doctor-name { font-size: 1.55rem; font-weight: 700; color: var(--deep-twilight); margin-bottom: 4px; }
+  .doctor-degree { font-size: 0.88rem; font-weight: 600; color: var(--bright-teal); letter-spacing: 0.04em; margin-bottom: 12px; }
+  .doctor-title-sub { font-size: 0.82rem; color: var(--text-muted); font-weight: 500; }
+  .doctor-details h3 { font-size: 1.6rem; color: var(--deep-twilight); margin-bottom: 16px; font-weight: 700; }
+  .doctor-bio { font-size: 0.95rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 28px; }
+  .doctor-specs-title { font-size: 0.82rem; font-weight: 700; color: var(--deep-twilight); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 14px; }
   .specs-pills { display: flex; flex-wrap: wrap; gap: 10px; }
   .spec-pill {
-    background: var(--white); color: var(--navy); border: 1px solid rgba(62,180,224,0.4);
-    padding: 8px 16px; border-radius: 50px; font-size: 0.82rem; font-weight: 600;
-    display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+    background: var(--light-cyan); color: var(--deep-twilight); border: 1px solid var(--border);
+    padding: 8px 18px; border-radius: var(--radius-pill); font-size: 0.82rem; font-weight: 500;
+    display: inline-flex; align-items: center; gap: 6px;
   }
-  .spec-pill::before { content: '✓'; color: var(--sky); font-weight: 800; }
+  .spec-pill::before { content: '✓'; color: var(--bright-teal); font-weight: bold; }
 
-  /* 3. WHY CHOOSE US */
-  #why-choose-us { background: var(--soft-gray); }
+  /* WHY CHOOSE US */
+  #why-choose-us { background: var(--off-white); border-bottom: 1px solid var(--border); }
   .why-header { text-align: center; margin-bottom: 48px; }
   .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
   .why-card {
     background: var(--white); border-radius: var(--radius); padding: 32px 24px;
-    border: 1px solid var(--border); transition: all 0.25s; position: relative;
+    border: 1px solid var(--border); transition: all 0.25s;
   }
-  .why-card:hover { border-color: var(--sky); box-shadow: 0 10px 32px rgba(62,180,224,0.12); transform: translateY(-4px); }
+  .why-card:hover { border-color: var(--bright-teal); transform: translateY(-4px); }
   .why-icon {
-    width: 56px; height: 56px; background: var(--sky-light); color: var(--sky);
-    border-radius: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;
+    width: 52px; height: 52px; background: var(--light-cyan); color: var(--bright-teal);
+    border-radius: var(--radius-sm); border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center; margin-bottom: 20px;
   }
-  .why-card h3 { font-size: 1.1rem; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
-  .why-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; }
+  .why-card h3 { font-size: 1.1rem; font-weight: 600; color: var(--deep-twilight); margin-bottom: 10px; }
+  .why-card p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; }
 
-  /* 4. TREATMENT PROCESS */
-  #process { background: linear-gradient(180deg, #FFFFFF 0%, #EBF7FD 100%); }
+  /* TREATMENT PROCESS */
+  #process { background: var(--white); border-bottom: 1px solid var(--border); }
   .process-header { text-align: center; margin-bottom: 56px; }
   .process-timeline {
     display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px;
     position: relative; margin-top: 20px;
   }
   .process-step {
-    background: var(--white); border-radius: var(--radius); padding: 28px 18px;
+    background: var(--off-white); border-radius: var(--radius); padding: 28px 18px;
     border: 1px solid var(--border); text-align: center; position: relative;
-    box-shadow: 0 6px 20px rgba(27,43,107,0.04); transition: transform 0.2s;
+    transition: transform 0.2s;
   }
-  .process-step:hover { transform: translateY(-4px); border-color: var(--sky); }
+  .process-step:hover { transform: translateY(-4px); border-color: var(--bright-teal); }
   .step-num {
     display: inline-flex; align-items: center; justify-content: center;
-    width: 44px; height: 44px; background: var(--navy); color: #fff;
-    font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700;
-    border-radius: 50%; margin-bottom: 16px; box-shadow: 0 4px 12px rgba(27,43,107,0.2);
+    width: 42px; height: 42px; background: var(--deep-twilight); color: var(--white);
+    font-family: 'Space Grotesk', sans-serif; font-size: 1.05rem; font-weight: 700;
+    border-radius: 50%; margin-bottom: 16px;
   }
-  .process-step h4 { font-size: 0.98rem; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
-  .process-step p { font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
+  .process-step h4 { font-size: 0.98rem; font-weight: 600; color: var(--deep-twilight); margin-bottom: 8px; }
+  .process-step p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; }
   .step-arrow {
     position: absolute; top: 50%; right: -12px; transform: translateY(-50%);
-    width: 24px; height: 24px; background: var(--sky); color: #fff;
-    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    width: 24px; height: 24px; background: var(--white); color: var(--bright-teal);
+    border: 1px solid var(--border); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
     font-size: 0.75rem; z-index: 2; font-weight: bold;
   }
 
-  /* 5. TECHNOLOGY */
-  #technology { background: var(--white); }
+  /* TECHNOLOGY */
+  #technology { background: var(--off-white); border-bottom: 1px solid var(--border); }
   .tech-header { text-align: center; margin-bottom: 48px; }
   .tech-main-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; margin-bottom: 40px; }
-  .tech-img-box img { width: 100%; border-radius: var(--radius); border: 1px solid var(--border); box-shadow: 0 12px 36px rgba(27,43,107,0.1); height: 320px; object-fit: cover; }
+  .tech-img-box img { width: 100%; border-radius: var(--radius); border: 1px solid var(--border); height: 320px; object-fit: cover; }
   .tech-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
   .tech-card {
-    background: linear-gradient(135deg, var(--soft-gray) 0%, var(--sky-light) 100%);
-    border-radius: var(--radius); padding: 28px 20px; border: 1px solid var(--border);
-    text-align: center; transition: all 0.3s;
+    background: var(--white); border-radius: var(--radius); padding: 28px 20px;
+    border: 1px solid var(--border); text-align: center; transition: all 0.25s;
   }
-  .tech-card:hover { transform: translateY(-5px); box-shadow: 0 14px 40px rgba(62,180,224,0.15); border-color: var(--sky); }
+  .tech-card:hover { transform: translateY(-4px); border-color: var(--bright-teal); }
   .tech-icon-box {
-    width: 56px; height: 56px; background: var(--white); border-radius: 16px;
-    display: flex; align-items: center; justify-content: center; margin: 0 auto 16px;
-    box-shadow: 0 6px 20px rgba(27,43,107,0.08); color: var(--sky);
+    width: 52px; height: 52px; background: var(--light-cyan); border-radius: var(--radius-sm);
+    border: 1px solid var(--border); display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 16px; color: var(--bright-teal);
   }
-  .tech-card h3 { font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
-  .tech-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+  .tech-card h3 { font-size: 1rem; font-weight: 600; color: var(--deep-twilight); margin-bottom: 8px; }
+  .tech-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; }
 
-  /* 6. FAQ ACCORDION */
-  #faq { background: var(--soft-gray); }
+  /* FAQ ACCORDION */
+  #faq { background: var(--white); border-bottom: 1px solid var(--border); }
   .faq-header { text-align: center; margin-bottom: 44px; }
   .faq-accordion { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; }
   .faq-item {
-    background: var(--white); border-radius: var(--radius-sm); border: 1px solid var(--border);
+    background: var(--off-white); border-radius: var(--radius-sm); border: 1px solid var(--border);
     overflow: hidden; transition: border-color 0.2s;
   }
-  .faq-item.active { border-color: var(--sky); box-shadow: 0 4px 20px rgba(62,180,224,0.1); }
+  .faq-item.active { border-color: var(--bright-teal); }
   .faq-question {
-    padding: 20px 24px; font-size: 1rem; font-weight: 700; color: var(--navy);
-    display: flex; justify-content: space-between; align-items: center; cursor: pointer;
-    user-select: none;
+    padding: 20px 24px; font-family: 'Space Grotesk', sans-serif; font-size: 1.05rem;
+    font-weight: 600; color: var(--deep-twilight); display: flex; justify-content: space-between;
+    align-items: center; cursor: pointer; user-select: none;
   }
   .faq-toggle-icon {
-    width: 28px; height: 28px; background: var(--sky-light); color: var(--sky);
-    border-radius: 50%; display: flex; align-items: center; justify-content: center;
-    font-size: 1.2rem; font-weight: 600; transition: transform 0.3s; flex-shrink: 0;
+    width: 28px; height: 28px; background: var(--white); color: var(--bright-teal);
+    border: 1px solid var(--border); border-radius: 50%; display: flex;
+    align-items: center; justify-content: center; font-size: 1.1rem;
+    font-weight: 600; transition: transform 0.3s; flex-shrink: 0;
   }
-  .faq-item.active .faq-toggle-icon { transform: rotate(45deg); background: var(--navy); color: #fff; }
+  .faq-item.active .faq-toggle-icon { transform: rotate(45deg); background: var(--bright-teal); color: var(--white); border-color: var(--bright-teal); }
   .faq-answer {
     max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease;
-    padding: 0 24px; font-size: 0.92rem; color: var(--muted); line-height: 1.7;
+    padding: 0 24px; font-size: 0.92rem; color: var(--text-muted); line-height: 1.7;
   }
   .faq-item.active .faq-answer { padding: 0 24px 20px 24px; max-height: 200px; }
 
-  /* 7. GOOGLE MAPS */
-  #location { background: var(--white); }
+  /* LOCATION */
+  #location { background: var(--off-white); border-bottom: 1px solid var(--border); }
   .location-header { text-align: center; margin-bottom: 40px; }
   .location-wrap {
     display: grid; grid-template-columns: 1.5fr 1fr; gap: 24px;
-    background: var(--soft-gray); border-radius: var(--radius); border: 1px solid var(--border);
-    overflow: hidden; box-shadow: 0 10px 36px rgba(27,43,107,0.06);
+    background: var(--white); border-radius: var(--radius); border: 1px solid var(--border);
+    overflow: hidden;
   }
   .map-frame { width: 100%; height: 380px; border: none; }
   .location-info { padding: 36px 30px; display: flex; flex-direction: column; justify-content: center; }
-  .location-info h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--navy); margin-bottom: 12px; }
-  .location-info p { font-size: 0.92rem; color: var(--muted); margin-bottom: 24px; line-height: 1.6; }
+  .location-info h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.4rem; color: var(--deep-twilight); margin-bottom: 12px; }
+  .location-info p { font-size: 0.92rem; color: var(--text-muted); margin-bottom: 24px; line-height: 1.6; }
   .location-meta { display: flex; flex-direction: column; gap: 14px; margin-bottom: 28px; }
-  .meta-item { display: flex; align-items: center; gap: 12px; font-size: 0.9rem; color: var(--text); }
-  .meta-icon { width: 36px; height: 36px; background: var(--sky-light); color: var(--sky); border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .meta-item { display: flex; align-items: center; gap: 12px; font-size: 0.9rem; color: var(--deep-twilight); }
+  .meta-icon { width: 36px; height: 36px; background: var(--light-cyan); color: var(--bright-teal); border-radius: var(--radius-sm); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 
-  /* 8. STRONG FINAL CTA */
+  /* STRONG FINAL CTA (DEEP TWILIGHT BAND) */
   #final-cta {
-    background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 60%, #254099 100%);
-    color: #fff; text-align: center; padding: 90px 5%; position: relative; overflow: hidden;
-  }
-  #final-cta::before {
-    content: ''; position: absolute; top: -50px; left: -50px; width: 300px; height: 300px;
-    background: radial-gradient(circle, rgba(62,180,224,0.2) 0%, transparent 70%);
-    border-radius: 50%; pointer-events: none;
+    background: var(--deep-twilight); color: var(--white); text-align: center; padding: 90px 5%;
+    position: relative; overflow: hidden; border-bottom: 1px solid var(--border-dark);
   }
   .cta-content { max-width: 650px; margin: 0 auto; position: relative; z-index: 1; }
   .cta-content h2 {
-    font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 4vw, 3rem);
-    font-weight: 700; color: #fff; margin-bottom: 16px; line-height: 1.2;
+    font-family: 'Space Grotesk', sans-serif; font-size: clamp(2.2rem, 4vw, 3rem);
+    font-weight: 700; color: var(--white); margin-bottom: 16px; line-height: 1.2;
   }
-  .cta-content p { font-size: 1.1rem; color: rgba(255,255,255,0.8); margin-bottom: 36px; }
+  .cta-content p { font-size: 1rem; color: rgba(255,255,255,0.78); margin-bottom: 36px; }
   .cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  
   .btn-cta-appt {
-    background: var(--sky); color: #fff; padding: 15px 34px; border-radius: 50px;
-    font-weight: 700; font-size: 0.95rem; text-decoration: none; transition: all 0.2s;
-    box-shadow: 0 4px 20px rgba(62,180,224,0.4); display: inline-flex; align-items: center; gap: 8px;
+    background: var(--bright-teal); color: var(--white); padding: 15px 34px; border-radius: var(--radius-pill);
+    font-weight: 600; font-size: 0.92rem; text-decoration: none; transition: all 0.2s;
+    display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--bright-teal);
   }
-  .btn-cta-appt:hover { background: #2cb0de; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(62,180,224,0.5); }
+  .btn-cta-appt:hover { background: var(--turquoise-surf); border-color: var(--turquoise-surf); transform: translateY(-2px); }
+  
   .btn-cta-wa {
-    background: #25D366; color: #fff; padding: 15px 34px; border-radius: 50px;
-    font-weight: 700; font-size: 0.95rem; text-decoration: none; transition: all 0.2s;
-    box-shadow: 0 4px 20px rgba(37,211,102,0.3); display: inline-flex; align-items: center; gap: 8px;
+    background: #25D366; color: #fff; padding: 15px 34px; border-radius: var(--radius-pill);
+    font-weight: 600; font-size: 0.92rem; text-decoration: none; transition: all 0.2s;
+    display: inline-flex; align-items: center; gap: 8px;
   }
-  .btn-cta-wa:hover { background: #20bd5a; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(37,211,102,0.4); }
+  .btn-cta-wa:hover { background: #20bd5a; transform: translateY(-2px); }
 
   /* FOOTER */
-  footer { background: #0F1B40; padding: 28px 5%; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
-  footer p { font-size: 0.82rem; color: rgba(255,255,255,0.4); }
+  footer { background: var(--deep-twilight); padding: 32px 5%; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+  footer p { font-size: 0.82rem; color: rgba(255,255,255,0.55); }
   .footer-links { display: flex; gap: 20px; }
-  .footer-links a { font-size: 0.82rem; color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; }
-  .footer-links a:hover { color: var(--sky); }
+  .footer-links a { font-size: 0.82rem; color: rgba(255,255,255,0.55); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--frosted-blue); }
 
   /* FLOATING WA */
   .wa-float {
     position: fixed; bottom: 28px; right: 24px;
     width: 56px; height: 56px; background: #25D366; border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
-    box-shadow: 0 4px 20px rgba(37,211,102,0.4); z-index: 200; text-decoration: none; transition: all 0.2s;
+    box-shadow: 0 4px 20px rgba(37,211,102,0.3); z-index: 200; text-decoration: none; transition: all 0.2s;
   }
-  .wa-float:hover { transform: scale(1.08); box-shadow: 0 8px 28px rgba(37,211,102,0.5); }
+  .wa-float:hover { transform: scale(1.08); }
+
+  /* SCROLL REVEAL ANIMATIONS */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+  }
+  .fade-up.appear {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .stagger-1 { transition-delay: 0.08s; }
+  .stagger-2 { transition-delay: 0.16s; }
+  .stagger-3 { transition-delay: 0.24s; }
+  .stagger-4 { transition-delay: 0.32s; }
+  .stagger-5 { transition-delay: 0.40s; }
+  .stagger-6 { transition-delay: 0.48s; }
 
   /* MOBILE RESPONSIVE */
   @media (max-width: 992px) {
@@ -363,9 +403,9 @@
   }
   @media (max-width: 768px) {
     .nav-links {
-      position: fixed; top: 72px; left: 0; right: 0; background: #fff;
+      position: fixed; top: 72px; left: 0; right: 0; background: var(--white);
       flex-direction: column; padding: 24px; border-bottom: 1px solid var(--border);
-      display: none; gap: 1.2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      display: none; gap: 1.2rem;
     }
     .nav-links.active { display: flex; }
     .hamburger { display: flex; }
@@ -428,7 +468,7 @@
     <img class="hero-img-main" src="clinic-reception.png" alt="Gujarathi Dental Clinic Reception & Lounge">
     <div class="hero-badge">
       <div class="badge-icon">
-        <svg width="22" height="22" fill="#3EB4E0" viewBox="0 0 24 24"><path d="M12 2l2.4 7.4h7.6l-6.2 4.5 2.4 7.4-6.2-4.5-6.2 4.5 2.4-7.4-6.2-4.5h7.6z"/></svg>
+        <svg width="20" height="20" fill="var(--bright-teal)" viewBox="0 0 24 24"><path d="M12 2l2.4 7.4h7.6l-6.2 4.5 2.4 7.4-6.2-4.5-6.2 4.5 2.4-7.4-6.2-4.5h7.6z"/></svg>
       </div>
       <div class="badge-text">
         <strong>Top Rated Clinic</strong>
@@ -473,28 +513,28 @@
   <div class="services-grid">
     <div class="service-card">
       <div class="service-icon">
-        <svg width="26" height="26" fill="none" stroke="#1B2B6B" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8z"/><path d="M12 6v6l4 2"/></svg>
+        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8z"/><path d="M12 6v6l4 2"/></svg>
       </div>
       <h3>Root Canal Treatment</h3>
       <p>Painless, single-sitting endodontic therapy to save infected teeth with maximum precision.</p>
     </div>
     <div class="service-card">
       <div class="service-icon">
-        <svg width="26" height="26" fill="none" stroke="#1B2B6B" stroke-width="2" viewBox="0 0 24 24"><path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
       </div>
       <h3>Dental Implants</h3>
       <p>Permanent, natural-looking tooth replacement solutions engineered for optimal chewing and aesthetics.</p>
     </div>
     <div class="service-card">
       <div class="service-icon">
-        <svg width="26" height="26" fill="none" stroke="#1B2B6B" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></svg>
+        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></svg>
       </div>
       <h3>Smile Designing</h3>
       <p>Cosmetic teeth whitening, veneers, and alignment for a flawless, glowing smile transform.</p>
     </div>
     <div class="service-card">
       <div class="service-icon">
-        <svg width="26" height="26" fill="none" stroke="#1B2B6B" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
       </div>
       <h3>Pediatric Dentistry</h3>
       <p>Gentle, stress-free dental care tailored specifically for young children and teens.</p>
@@ -502,7 +542,7 @@
   </div>
 </section>
 
-<!-- 1. DOCTOR PROFILE -->
+<!-- DOCTOR PROFILE -->
 <section id="doctor">
   <div class="text-center">
     <div class="section-label">Lead Specialist</div>
@@ -514,10 +554,10 @@
     <div class="doctor-card">
       <div class="doctor-avatar-wrap">
         <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="100" cy="100" r="95" fill="#EBF7FD"/>
-          <circle cx="100" cy="75" r="38" fill="#1B2B6B"/>
-          <path d="M40 175C40 135 68 120 100 120C132 120 160 135 160 175V190H40V175Z" fill="#1B2B6B"/>
-          <path d="M90 120L100 145L110 120" stroke="#3EB4E0" stroke-width="4"/>
+          <circle cx="100" cy="100" r="95" fill="var(--white)"/>
+          <circle cx="100" cy="75" r="38" fill="var(--deep-twilight)"/>
+          <path d="M40 175C40 135 68 120 100 120C132 120 160 135 160 175V190H40V175Z" fill="var(--deep-twilight)"/>
+          <path d="M90 120L100 145L110 120" stroke="var(--turquoise-surf)" stroke-width="4"/>
         </svg>
         <span class="doctor-badge-exp">10+ Yrs Exp</span>
       </div>
@@ -545,7 +585,7 @@
   </div>
 </section>
 
-<!-- 3. WHY CHOOSE US -->
+<!-- WHY CHOOSE US -->
 <section id="why-choose-us">
   <div class="why-header text-center">
     <div class="section-label">Our Advantages</div>
@@ -556,7 +596,7 @@
   <div class="why-grid">
     <div class="why-card">
       <div class="why-icon">
-        <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M20 8v6M23 11h-6"/></svg>
+        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M20 8v6M23 11h-6"/></svg>
       </div>
       <h3>Experienced Dentist</h3>
       <p>Over a decade of specialized clinical experience delivering gentle, high-precision procedures.</p>
@@ -564,7 +604,7 @@
 
     <div class="why-card">
       <div class="why-icon">
-        <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
       </div>
       <h3>Modern Equipment</h3>
       <p>Equipped with advanced digital imaging and low-radiation diagnostics for supreme accuracy.</p>
@@ -572,7 +612,7 @@
 
     <div class="why-card">
       <div class="why-icon">
-        <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
       </div>
       <h3>Comfortable Environment</h3>
       <p>Designed with a soothing, hygienic ambiance to ensure a relaxed, stress-free visit.</p>
@@ -580,7 +620,7 @@
 
     <div class="why-card">
       <div class="why-icon">
-        <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
       </div>
       <h3>Sterilization & Hygiene</h3>
       <p>Strict multi-step autoclave sterilization and 100% disposable consumables policy.</p>
@@ -588,7 +628,7 @@
 
     <div class="why-card">
       <div class="why-icon">
-        <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
       </div>
       <h3>Personalized Treatment</h3>
       <p>Customized care plans tailored specifically to your clinical needs, preferences, and timeline.</p>
@@ -596,7 +636,7 @@
 
     <div class="why-card">
       <div class="why-icon">
-        <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
       </div>
       <h3>Family-Friendly Care</h3>
       <p>Complete dental solutions for kids, adults, and seniors under one trustworthy roof.</p>
@@ -604,7 +644,7 @@
   </div>
 </section>
 
-<!-- 4. TREATMENT PROCESS -->
+<!-- TREATMENT PROCESS -->
 <section id="process">
   <div class="process-header text-center">
     <div class="section-label">Step-By-Step</div>
@@ -645,7 +685,7 @@
   </div>
 </section>
 
-<!-- 5. TECHNOLOGY -->
+<!-- TECHNOLOGY -->
 <section id="technology">
   <div class="tech-header text-center">
     <div class="section-label">Modern Infrastructure</div>
@@ -660,40 +700,40 @@
     <div class="tech-grid">
       <div class="tech-card">
         <div class="tech-icon-box">
-          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><circle cx="12" cy="12" r="3"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2"/></svg>
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><circle cx="12" cy="12" r="3"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2"/></svg>
         </div>
         <h3>Digital X-Ray</h3>
-        <p>Low-radiation instant digital radiographies providing immediate, high-resolution diagnostic insights.</p>
+        <p>Low-radiation instant digital radiographies providing immediate diagnostic insights.</p>
       </div>
 
       <div class="tech-card">
         <div class="tech-icon-box">
-          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 10l5 5-5 5"/><path d="M4 4v7a4 4 0 004 4h12"/></svg>
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 10l5 5-5 5"/><path d="M4 4v7a4 4 0 004 4h12"/></svg>
         </div>
         <h3>Intraoral Camera</h3>
-        <p>HD intraoral camera allowing real-time video inspection of your teeth on a chairside screen.</p>
+        <p>HD intraoral camera allowing real-time video inspection of your teeth on screen.</p>
       </div>
 
       <div class="tech-card">
         <div class="tech-icon-box">
-          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
         </div>
         <h3>Modern Dental Chair</h3>
-        <p>Ergonomic chairs and silent rotary handpieces for ultra-quiet, painless clinical procedures.</p>
+        <p>Ergonomic chairs and silent rotary handpieces for painless clinical procedures.</p>
       </div>
 
       <div class="tech-card">
         <div class="tech-icon-box">
-          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         </div>
         <h3>Advanced Sterilization</h3>
-        <p>Class-B vacuum autoclave technology ensuring 100% sterile tools and maximum infection control.</p>
+        <p>Class-B vacuum autoclave technology ensuring 100% sterile tools and hygiene.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 6. FAQ ACCORDION -->
+<!-- FAQ ACCORDION -->
 <section id="faq">
   <div class="faq-header text-center">
     <div class="section-label">Patient Information</div>
@@ -754,7 +794,7 @@
   </div>
 </section>
 
-<!-- 7. GOOGLE MAPS -->
+<!-- LOCATION -->
 <section id="location">
   <div class="location-header text-center">
     <div class="section-label">Find Us Easily</div>
@@ -797,7 +837,7 @@
   </div>
 </section>
 
-<!-- 8. STRONG FINAL CTA -->
+<!-- STRONG FINAL CTA (DEEP TWILIGHT BAND) -->
 <section id="final-cta">
   <div class="cta-content">
     <h2>Ready for a Healthier Smile?</h2>
@@ -824,7 +864,7 @@
   </div>
 </footer>
 
-<!-- Floating WhatsApp -->
+<!-- FLOATING WA -->
 <a class="wa-float" href="https://wa.me/919904235189?text=Hello%2C%20I%27d%20like%20to%20book%20an%20appointment%20at%20Gujarathi%20Dental%20Clinic." target="_blank" aria-label="Chat on WhatsApp">
   <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
@@ -843,6 +883,37 @@
       element.classList.add('active');
     }
   }
+
+  // Scroll Reveal Animations
+  document.addEventListener('DOMContentLoaded', () => {
+    const animateTargets = document.querySelectorAll(
+      'section > .text-center, .hero-content, .hero-visual, .gallery-card, .service-card, .doctor-card, .doctor-details, .why-card, .process-step, .tech-img-box, .tech-card, .faq-item, .location-wrap, .cta-content'
+    );
+
+    animateTargets.forEach(el => el.classList.add('fade-up'));
+
+    const gridContainers = document.querySelectorAll('.services-grid, .why-grid, .process-timeline, .tech-grid, .gallery-grid, .faq-accordion');
+    gridContainers.forEach(container => {
+      const children = Array.from(container.children);
+      children.forEach((child, idx) => {
+        child.classList.add(`stagger-${(idx % 6) + 1}`);
+      });
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('appear');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: '0px 0px -30px 0px'
+    });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  });
 </script>
 </body>
 </html>
